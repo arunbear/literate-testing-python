@@ -30,3 +30,18 @@ class StackSpec:
             # then ->
             assert stack.depth() == 1
             assert stack.top() == rock
+
+    class A_non_empty_stack:
+        def becomes_deeper_by_retaining_a_pushed_item_as_its_top(self):
+            # given ->
+            stack = Stack()
+            stack.push("paper")
+            old_depth = stack.depth()
+
+            # when ->
+            rock = "rock"
+            stack.push(rock)
+
+            # then ->
+            assert stack.depth() > old_depth
+            assert stack.top() == rock
