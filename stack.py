@@ -13,3 +13,9 @@ class Stack:
             raise Stack.InvalidStateError
 
         return self.__stack[-1]
+
+    def pop(self):
+        if len(self.__stack) == 0:
+            raise Stack.InvalidStateError
+
+        self.__stack.pop()

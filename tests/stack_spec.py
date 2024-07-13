@@ -13,3 +13,8 @@ class StackSpec:
             with pytest.raises(Stack.InvalidStateError):
                 stack = Stack()
                 stack.top()
+
+        def throws_when_popped(self):
+            with pytest.raises(Stack.InvalidStateError):
+                stack = Stack()
+                stack.pop()
