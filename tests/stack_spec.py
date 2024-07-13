@@ -45,3 +45,21 @@ class StackSpec:
             # then ->
             assert stack.depth() > old_depth
             assert stack.top() == rock
+
+        def on_popping_reveals_tops_in_reverse_order_of_pushing(self):
+            # given ->
+            stack = Stack()
+            rock = "rock"
+            paper = "paper"
+            scissors = "scissors"
+
+            stack.push(rock)
+            stack.push(paper)
+            stack.push(scissors)
+
+            # when / then ->
+            stack.pop()
+            assert stack.top() == paper
+
+            stack.pop()
+            assert stack.top() == rock
