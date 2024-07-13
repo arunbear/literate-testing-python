@@ -6,7 +6,7 @@ class Stack:
         self.__stack = []
 
     def depth(self):
-        return 0
+        return len(self.__stack)
 
     def top(self):
         if len(self.__stack) == 0:
@@ -19,3 +19,6 @@ class Stack:
             raise Stack.InvalidStateError
 
         self.__stack.pop()
+
+    def push(self, item):
+        self.__stack.append(item)

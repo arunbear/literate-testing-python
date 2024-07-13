@@ -18,3 +18,15 @@ class StackSpec:
             with pytest.raises(Stack.InvalidStateError):
                 stack = Stack()
                 stack.pop()
+
+        def acquires_depth_by_retaining_a_pushed_item_as_its_top(self):
+            # given ->
+            stack = Stack()
+
+            # when ->
+            rock = "rock"
+            stack.push(rock)
+
+            # then ->
+            assert stack.depth() == 1
+            assert stack.top() == rock
