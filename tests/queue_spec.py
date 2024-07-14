@@ -3,7 +3,7 @@ import pytest
 
 class Queue:
     def __init__(self, capacity):
-        if capacity == 0:
+        if capacity <= 0:
             raise ValueError()
         self.__capacity = capacity
         self.__queue = []
@@ -28,4 +28,8 @@ class QueueSpec:
 
         def rejects_a_zero_bounding_capacity(self):
             with pytest.raises(ValueError):
-                queue = Queue(0)
+                Queue(0)
+
+        def rejects_a_negative_bounding_capacity(self):
+            with pytest.raises(ValueError):
+                Queue(-1)
