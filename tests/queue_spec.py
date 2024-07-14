@@ -1,5 +1,10 @@
+import pytest
+
+
 class Queue:
     def __init__(self, capacity):
+        if capacity == 0:
+            raise ValueError()
         self.__capacity = capacity
         self.__queue = []
 
@@ -20,3 +25,7 @@ class QueueSpec:
             capacity = 1
             queue = Queue(capacity)
             assert queue.capacity() == capacity
+
+        def rejects_a_zero_bounding_capacity(self):
+            with pytest.raises(ValueError):
+                queue = Queue(0)
