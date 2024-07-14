@@ -14,6 +14,9 @@ class Queue:
     def capacity(self):
         return self.__capacity
 
+    def dequeue(self):
+        return ()
+
 
 class QueueSpec:
     class A_new_queue:
@@ -33,3 +36,7 @@ class QueueSpec:
         def rejects_a_negative_bounding_capacity(self):
             with pytest.raises(ValueError):
                 Queue(-1)
+    class An_empty_queue:
+        def dequeues_an_empty_tuple(self):
+            queue = Queue(1)
+            assert queue.dequeue() == ()
