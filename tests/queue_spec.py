@@ -1,5 +1,5 @@
 import pytest
-from optional import Optional
+from optional import Optional, Something
 
 
 class Queue:
@@ -16,10 +16,14 @@ class Queue:
         return self.__capacity
 
     def dequeue(self):
-        return Optional.empty()
+        if self.length() == 0:
+            return Optional.empty()
+        else:
+            return Something(self.__queue.pop(0))
 
     def enqueue(self, item):
-        self.__queue.append(item)
+        if len(self.__queue) < self.__capacity:
+            self.__queue.append(item)
 
 
 class QueueSpec:
@@ -76,3 +80,15 @@ class QueueSpec:
                 # then ->
                 assert queue.length() == queue.capacity()
 
+        class that_is_full:
+            def ignores_further_enqueued_values(self):
+                # given ->
+                queue = Queue(1)
+                queue.enqueue('rock')
+
+                # when ->
+                queue.enqueue('paper')
+
+                # then ->
+                assert queue.length() == 1
+                assert queue.dequeue() == Something('rock')
