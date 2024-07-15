@@ -50,3 +50,17 @@ class QueueSpec:
             queue = Queue(1)
             queue.enqueue('rock')
             assert queue.length() > 0
+
+    class A_non_empty_queue:
+        class that_is_not_full:
+            def becomes_longer_when_value_enqueued(self):
+                # given ->
+                queue = Queue(2)
+                queue.enqueue('rock')
+                old_length = queue.length()
+
+                # when ->
+                queue.enqueue('paper')
+
+                # then ->
+                assert queue.length() > old_length
