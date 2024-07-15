@@ -1,1 +1,3 @@
 pytest-relaxed>=2.0.2
+optional.py>=2.0.0
+pytest~=8.2.2

@@ -1,4 +1,5 @@
 import pytest
+from optional import Optional
 
 
 class Queue:
@@ -15,7 +16,7 @@ class Queue:
         return self.__capacity
 
     def dequeue(self):
-        return ()
+        return Optional.empty()
 
     def enqueue(self, item):
         self.__queue.append(item)
@@ -41,9 +42,9 @@ class QueueSpec:
                 Queue(-1)
 
     class An_empty_queue:
-        def dequeues_an_empty_tuple(self):
+        def dequeues_an_empty_optional(self):
             queue = Queue(1)
-            assert queue.dequeue() == ()
+            assert queue.dequeue() == Optional.empty()
 
         def becomes_non_empty_when_value_enqueued(self):
             queue = Queue(1)
