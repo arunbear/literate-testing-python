@@ -115,3 +115,18 @@ class QueueSpec:
 
             # then ->
             assert queue.length() < old_length
+
+        def dequeues_values_in_order_enqueued(self):
+            # given ->
+            rock = "rock"
+            paper = "paper"
+            queue = Queue(2)
+
+            # when ->
+            queue.enqueue(rock)
+            queue.enqueue(paper)
+
+            # then ->
+            assert queue.dequeue() == Something(rock)
+            assert queue.dequeue() == Something(paper)
+
