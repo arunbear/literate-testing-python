@@ -92,3 +92,14 @@ class QueueSpec:
                 # then ->
                 assert queue.length() == 1
                 assert queue.dequeue() == Something('rock')
+
+            def becomes_non_full_when_dequeued(self):
+                # given ->
+                queue = Queue(1)
+                queue.enqueue('rock')
+
+                # when ->
+                queue.dequeue()
+
+                # then ->
+                assert queue.length() < queue.capacity()
