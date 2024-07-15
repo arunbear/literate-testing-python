@@ -103,3 +103,15 @@ class QueueSpec:
 
                 # then ->
                 assert queue.length() < queue.capacity()
+
+        def becomes_shorter_when_dequeued(self):
+            # given ->
+            queue = Queue(1)
+            queue.enqueue('rock')
+            old_length = queue.length()
+
+            # when ->
+            queue.dequeue()
+
+            # then ->
+            assert queue.length() < old_length
