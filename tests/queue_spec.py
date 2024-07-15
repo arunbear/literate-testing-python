@@ -64,3 +64,15 @@ class QueueSpec:
 
                 # then ->
                 assert queue.length() > old_length
+
+            def becomes_full_when_enqueued_up_to_capacity(self):
+                # given ->
+                queue = Queue(2)
+                queue.enqueue('rock')
+
+                # when ->
+                queue.enqueue('paper')
+
+                # then ->
+                assert queue.length() == queue.capacity()
+
