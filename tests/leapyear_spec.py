@@ -27,3 +27,8 @@ class LeapYearSpec:
         def if_it_is_positive(self, year):
             is_leap_year(year)
 
+    class A_year_is_not_supported:
+        def if_it_is_zero(self):
+            with pytest.raises(ValueError):
+                is_leap_year(0)
+
