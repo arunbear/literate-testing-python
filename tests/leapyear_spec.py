@@ -32,3 +32,7 @@ class LeapYearSpec:
             with pytest.raises(ValueError):
                 is_leap_year(0)
 
+        @pytest.mark.parametrize("year", [-1, -4, -100, -400])
+        def if_it_is_nagative(self, year):
+            with pytest.raises(ValueError):
+                is_leap_year(year)
