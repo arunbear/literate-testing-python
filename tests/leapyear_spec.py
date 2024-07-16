@@ -17,3 +17,7 @@ class LeapYearSpec:
         @pytest.mark.parametrize("year", [2022, 2019, 1999, 1])
         def if_it_is_not_divisible_by_4(self, year):
             assert not is_leap_year(year)
+
+        @pytest.mark.parametrize("year", [2100, 1900, 100])
+        def if_it_is_divisible_by_100_but_not_by_400(self, year):
+            assert not is_leap_year(year)
